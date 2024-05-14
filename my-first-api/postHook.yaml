@@ -4,7 +4,7 @@ metadata:
   generateName: after
   annotations:
     argocd.argoproj.io/hook: PostSync
-  spec:
+spec:
   template:
     metadata:
       name: curl-pod
@@ -16,3 +16,4 @@ metadata:
         args:
         - apk update && apk add curl && curl http://my-backend-api.default.svc.cluster.local:8092/user/123 # Replace http://example.com with your desired URL
       restartPolicy: Never
+  backoffLimit: 1
