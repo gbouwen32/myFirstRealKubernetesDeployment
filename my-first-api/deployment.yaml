@@ -16,4 +16,4 @@ spec:
     spec:
       containers:
       - name: my-backend-api
-        image: andyy5/my-backend-api
+        image: gbouwen/my-backend-api
