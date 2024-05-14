@@ -1,10 +1,9 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: after
+  generateName: after
   annotations:
     argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
   spec:
   template:
     metadata:
@@ -15,5 +14,5 @@ metadata:
         image: alpine
         command: ["sh", "-c"]
         args:
-        - apk update && apk add curl && curl http://my-backend-api:8092/user/123 # Replace http://example.com with your desired URL
+        - apk update && apk add curl && curl http://my-backend-api.default.svc.cluster.local:8092/user/123 # Replace http://example.com with your desired URL
       restartPolicy: Never
